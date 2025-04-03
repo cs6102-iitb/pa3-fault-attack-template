@@ -41,6 +41,6 @@ print(f"{key_guess:02x}")
 
 #################################
 
-# you may write your code below this
+# you may write your code below this to complete your assignment
 
 
