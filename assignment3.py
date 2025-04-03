@@ -1,3 +1,6 @@
+# imports
+import sys
+
 inv_sbox = [
     0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38, 0xbf, 0x40, 0xa3, 0x9e, 0x81, 0xf3, 0xd7, 0xfb,
     0x7c, 0xe3, 0x39, 0x82, 0x9b, 0x2f, 0xff, 0x87, 0x34, 0x8e, 0x43, 0x44, 0xc4, 0xde, 0xe9, 0xcb,
@@ -31,16 +34,21 @@ def hex_to_byte(hex_str, pos=0):
     return int(byte_str, 16)
 
 # read ciphertexts (only need the 0th byte from each)
-filename = "replace_with_the_faulty_ciphertext_file_provided_to_your_team.txt"
+filename = sys.argv[1]
 with open(filename, 'r') as f:
     lines = f.read().splitlines()
-    ciphertext_bytes = [hex_to_byte(line, 0) for line in lines[:20]]	#the last line is not read as it contains the correct key byte which is to be used for verification.
-key_guess = 0
+    # the last line is not read as it contains the correct key byte which is to be used for verification.
+    ciphertext_bytes = [hex_to_byte(line, 0) for line in lines[:20]]
 
-print(f"{key_guess:02x}")
+key_guess = 0
 
 #################################
 
 # you may write your code below this to complete your assignment
 
+
+#########################
+# do not edit this line #
+#########################
+print(f"0x{key_guess:02x}")
 
